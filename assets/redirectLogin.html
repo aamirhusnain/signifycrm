@@ -10,9 +10,11 @@
 </head>
 
 <body>
-    <h1>Signify_CRM Rediract Login Page</h1>
-    <p>The window will be closed automatically. If not, please <a href="/">click here</a>.</p>
+    <h1>Signify_CRM Redirect Login Page</h1>
+    <p>The window will be closed automatically. If not, please <a href="#" onclick="closeDialog()">click here</a>.</p>
     <script>
+        let token_value = "";
+
         $(document).ready(function (e) {
             Office.onReady(function () {
                 var address_Link = window.location.href;
@@ -26,16 +28,23 @@
                     console.error("Error occurred during login:", error);
                     document.body.innerHTML = "<h1>Error occurred during login: " + error + "</h1>";
                 } else {
-                    document.body.innerHTML = "<h1>Login Successfully</h1>";
                     var address_Token = address_arr[2];
                     var Id_Token = address_Token.split("&");
                     var access_token = Id_Token[0];
                     console.log("Access Token:", access_token);
+                    token_value = access_token;
+
+                    // Uncomment the following line if you want to automatically close the dialog
                     Office.context.ui.messageParent(access_token);
-                    // Office.context.ui.closeContainer();  // Automatically close the dialog
+                    Office.context.ui.closeContainer();
                 }
             });
         });
+
+        function closeDialog() {
+            Office.context.ui.messageParent(token_value);
+            Office.context.ui.closeContainer();  // Automatically close the dialog
+        }
     </script>
 </body>
 
