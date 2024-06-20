@@ -12,6 +12,9 @@
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
     <AppDomain>https://demo.signifycrm.net</AppDomain>
+    <AppDomain>https://demo.signifycrm.net/outlook-addin</AppDomain>
+    <AppDomain>https://demo.icxcrm.net/sgenable_41</AppDomain>
+    
   </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
